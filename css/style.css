@@ -1,0 +1,738 @@
+/* 
+================================================
+================================================
+................. Color Palette ................
+------------------------------------------------
+ Background:   #f8f8f0     light ivory  
+ Surface:      #ffffff     white
+ Text:         #424242     neutral dark grey 
+ Primary:      #008285     teal
+ Accent:       #929000     yellow-green 
+================================================
+================================================
+*/
+
+
+/* 
+==================================
+......... 1. VARIABLES ...........
+================================== 
+*/
+/* Variables are defined for the site's color palette, and fonts. */
+
+:root {
+  --mummy: #f8f8f0;         /* light ivory */
+  --ghost: #ffffff;         /* white */
+  --darkness: #424242;      /* neutral dark grey */
+  --mermaid: #008285;       /* teal */
+  --zombie: #669900;        /* yellow-green */
+  --merman: #004749;        /* dark teal */
+
+  --wide-border: 15px solid var(--zombie);  /* 15px solid yellow-green border */
+
+  --font-basic: "Nunito Sans", Avenir, Montserrat, Corbel, source-sans-pro, system-ui, sans-serif;     /* primary font: rounded, neo-grotesque, sans-serif */ 
+  --font-extra: "SUSE Mono", Avenir, Montserrat, Corbel, source-sans-pro, system-ui, sans-serif;       /* secondary font: monospace, geometric, sans-serif */  
+  --font-ultra: "MuseoModerno", Avenir, Montserrat, Corbel, source-sans-pro, system-ui, sans-serif;    /* display font: retro, rounded, geometric, sans-serif */  
+  --font-accent: "Archivo Black", Avenir, Montserrat, Corbel, source-sans-pro, system-ui, sans-serif;  /* accent font: bold, grotesque, sans-serif */
+}
+
+
+/* 
+==================================
+........ 2. BASE STYLES ..........
+================================== 
+*/
+
+/* *, *::before, *::after are universal selectors that style all elements on the page. Padding and border do not 
+add to an element's total size. */
+*, *::before, *::after {
+  box-sizing: border-box;   /* keeps padding and border inside container */
+}
+
+
+/* The body element selector sets the page's default styles. The page's background is light ivory. Text is dark grey, with 
+increased spoacing between lines. Default margins are removed and horizontal overflow is clipped. */
+body {
+  color: var(--darkness);           /* dark grey text */
+  margin: 0;                        /* removes margins */
+  overflow-x: clip;                 /* prevents horizontal scrolling */
+}
+
+/* The main element selector styles the page's main content. The base font is a rounded sans-serif stack. Default margins 
+are removed. */
+main {
+  background-color: var(--mummy);   /* light ivory background */
+  font-family: var(--font-basic);     /* rounded sans-serif stack */
+  line-height: 1.6;                   /* increases space between lines */
+}
+
+/* The h1 element selector styles the page headline. Headline text is large, bold, teal, centered, and has wide line spacing. 
+Headline font is retro, rounded, geometric, sans-serif. Text sizing is responsive. */
+h1 {
+  color: var(--mermaid);                /* teal text */
+  font-family: var(--font-ultra);       /* retro sans-serif font */
+  font-size: clamp(35px, 8vw, 90px);    /* responsive text sizing */
+  text-align: center;                   /* horizontally centered text */
+  font-weight: 800;                     /* bold text */
+  margin: auto 0;                       /* header is vertically centered in container */
+  line-height: 1;                       /* more space between lines */
+}
+
+/* The h2 element selector styles a subhead. Subhead text is bold, teal, monospace, geometric, sans-serif font. Text has space 
+above and below, and no margins. Text sizing is responsive. */
+h2 {
+  justify-self: center;               /* horizontally centers element in container */
+  color: var(--mermaid);              /* teal text */
+  font-family: var(--font-ultra);     /* retro sans-serif font */
+  font-size: clamp(20px, 2vw, 24px);  /* responsive text sizing */ 
+  font-weight: 700;                   /* semi-bold text */
+  text-align: center;                 /* horizontally centered text */
+  padding: 10px 0;                    /* space above and below text */ 
+  margin: 0;                          /* removes margins */
+  line-height: 1;                     /* more space between lines */
+}
+
+/* The p element selector styles the page's paragraph text. Text is rounded sans-serif, dark grey, medium weight, with wide 
+line spacing. Line length is limited to 65 characters for better legibility. Text sizing is responsive. */
+p {
+  color: var(--darkness);                 /* dark grey text */
+  font-family: var(--font-basic);         /* rounded sans-serif stack */
+  font-size: clamp(14px, 1.4vw, 18px);    /* responsive text sizing */
+  font-weight: 500;                       /* medium text */
+  line-height: 1.8;                       /* more space between lines */
+  max-width: 65ch;                        /* maximum line length is 65 characters */ /* keeps text readable on desktop */
+}
+
+/* The img element selector styles an image. Image scales proportionally within its container, and image overflow
+is cropped.*/
+img {
+  display: block;     /* image sits on its pwn line line */
+  max-width: 100%;    /* image scales to fit container width */ 
+  height: auto;       /* container height adjusts to fit image */ /* prevents image distortion */
+}
+
+/* The .container class selector styles a container. The container is horizontally centered with no vertical margins. */
+.container {
+  margin: 0 auto;   /* horizontally centered */
+}
+
+
+/* 
+==================================
+...... 3. HEADER (Flexbox) .......
+================================== 
+*/
+
+/* The header element selector styles the Header section. The section has a teal background and a wide yellow-green bottom border.
+and is 100px tall. When the page scrolls, the header stays at the top of the window and covers body content. */
+header {
+  height: 100px;                        /* header height is 100px */  
+  background-color: var(--mermaid);     /* teal background */
+  border-bottom: var(--wide-border);    /* wide, yellow-green border along the bottom edge */
+  position: sticky;                     /* header stays in place when scrolling */  
+  top: 0;                               /* header is aligned to the top of the display */
+  z-index: 1000;                        /* header covers body content */ /* header stays visible when scrolling */
+}
+
+/* The .header-inner class selector styles thae header navigation's container. Container is an 85px tall flexbox with padding on
+all sides. Content is vertically centered in a row, and evenly spaced. */
+.header-inner {
+  display: flex;                    /* flexbox container */
+  flex-direction: row;              /* arranges header elements in a row */
+  height: 85px;                     /* height is 85px*/  
+  justify-content: space-between;   /* adds space between header elements */
+  align-items: center;              /* vertically centers header elements */
+  max-width: 1200px;                /* maximum width is 1200px */ /* prevents container from getting too wide on desktop */
+  margin: 0 auto;                   /* horizontally centered */
+  padding: 25px;                    /* space around header contents */
+}
+
+
+
+/* 
+==================================
+......... 4. NAVIGATION ..........
+================================== 
+*/
+/* The .menu-toggle class selector styles the hamburger button's container. The has a yellow-green background, 
+rounded corners, and a pointer cursor. On wide displays the hamburger button is hidden by default. On mobile, flexbox is
+used to center and evenly space content. */
+.menu-toggle {
+  display: none;                      /* sets display status to hidden */ /* makes hamburger button invisible on desktop */
+  flex-direction: column;             /* stacks bars in a column */
+  justify-content: center;            /* centers bars horizontally in the button */
+  align-items: center;                /* centers bars vertically in the button */
+  gap: 5px;                           /* even spacing between bars links */
+  padding: 12px;                      /* space around button */
+  background-color: var(--zombie);    /* yellow-green background */
+  border: none;                       /* no border */
+  border-radius: 8px;                 /* rounded corners */
+  cursor: pointer;                    /* pointer cursor */
+}
+
+/* The .bar class selector styles the hamburger menu bars. The bars are a short, thin, white rectangles with 
+slightly rounded corners.*/
+.bar {
+  display: block;                     /* bar sits on its own line */
+  width: 26px;                        /* bar length */
+  height: 3px;                        /* bar thickness */
+  background-color: var(--ghost);     /* white background */ /* colors the bar */
+  border-radius: 2px;                 /* slightly rounded corners */
+}
+
+/* The .primary-nav .navlinks descendant selector styles the site's primary navigation menu. The menu is an 85px tall flexbox, 
+with its contents horizontally centered and evenly spaced. Default margins, padding, and list styles (bullets) are removed. */
+.primary-nav .navlinks {  
+  display: flex;          /* flexbox container */
+  height: 85px;           /* navigation menu height */  
+  align-items: stretch;   /* background fills header vertically */
+  gap: 20px;              /* even spacing between navigation links */
+  list-style: none;       /* default list styling is removed */ /* removes bullets */
+  margin: 0;              /* removes margins */
+  padding: 0;             /* removes space around links  */
+}
+
+/* The .primary-nav .navlinks a descendant selector styles the site's primary navigation links. Links are vertically centered 
+flexboxes. Link text is white, retro sans-serif font, with horizontal padding, and no underline. Text sizing is responsive. */
+.primary-nav .navlinks a {
+  display: flex;                          /* flexbox container */
+  align-items: center;                    /* link is vertically centered */
+  height: 100%;                           /* link fills the height of its parent cpontainer */
+  padding: 0 10px;                        /* space on both sides of link */  
+  color: var(--ghost);                    /* white text */
+  font-family: var(--font-ultra);         /* retro sans-serif font */
+  font-optical-sizing: auto;              /* responsive letterforms */ /* improves legibility on small displays */
+  font-weight: 600;                       /* medium-sized text */
+  font-style: normal;                     /* no italics */
+  font-size: clamp(15px, 1.8vw, 18px);    /* responsive text sizing */
+  text-decoration: none;                  /* no underline on links */
+}
+
+/* The .primary-nav .navlinks a:hover pseudoclass styles a navigation link's hover state. On mouse hover, the link background 
+turns yellow-green, and text turns dark teal. */
+.primary-nav .navlinks a:hover {
+  background-color: var(--zombie);    /* yellow-green background */  
+  color: var(--merman);               /* dark teal text */
+}
+
+/* The .primary-nav .navlinks a:active pseudoclass styles a navigation link's active state. DUring mouse click, the 
+navigation link text turns white. */
+.primary-nav .navlinks a:active {
+  color: var(--ghost);   /* white text */
+}
+
+
+
+/* 
+==================================
+......... 5. SECTIONS ............
+================================== 
+*/
+
+/* -------------------------- */
+/*            HERO            */
+/* -------------------------- */
+
+/* The .hero class selector styles the hero section's container. The hero is a flexbox that's at least 80% of the viewport height, 
+and has a maximum width of 1200px. Hero content horizontally and verttically centered. */
+.hero {  
+  display: flex;              /* flexbox container */ 
+  flex-direction: column;     /* vertically stacks hero content */
+  margin: 0 auto;             /* horizontally centers hero container */
+  min-height: 80vh;           /* hero is at least 80% of the display height */
+  justify-content: center;    /* horizontally centers hero content */
+  align-items: center;        /* vertically centers hero content */
+  max-width: 1200px;          /* prevents hero from getting too wide on desktop */
+}
+
+/* The .hero-teal class selector styles a segment of header text in the hero section. Text is small, teal, with a light 
+font weight. */
+.hero-teal {
+  color: var(--mermaid);    /* teal text */  
+  font-weight: 300;         /* lightweight text */  
+  font-size: 0.6em;         /* small text */
+}
+
+/* The .hero-bold-green class selector styles a segment of header text in the hero section. Text is yellow-green. */
+.hero-bold-green {
+  color: var(--zombie);     /*  yellow-green text */
+}
+
+/* The .hero-green class selector styles a segment of header text in the hero section. Text is small, yellow-green, 
+with a light font weight. */
+.hero-green {
+  color: var(--zombie);     /* yellow-green text */  
+  font-weight: 300;         /* lightweight text */  
+  font-size: 0.6em;         /* small text */
+}
+
+/* The .filler-title class selector styles the title on an under-construction page. Page title has has extra large top/bottom
+margins. */
+.filler-title {
+  margin: 150px auto;       /* extra-large vertical margins */
+}
+
+/* The .tagline class selector styles the hero tagline. Text is centered, dark grey, monospace sans-serif with 
+responsive sizing. */
+.tagline {
+  color: var(--darkness);                 /* dark grey text */
+  font-family: var(--font-extra);         /* monospace sans-serif */
+  font-size: clamp(10px, 2.4vw, 16px);    /* responsive text sizing */
+  font-weight: 500;                       /* medium-weight text */
+  font-style: normal;                     /* no italics */
+  text-align: center;                     /* horizontally centered text */
+}
+
+
+/* -------------------------- */
+/*        PRIMARY CTA         */
+/* -------------------------- */
+
+/* THe .primary-cta class selector stlyes the primary call-to-action link as a button. The button has a teal background, and
+three rounded corners, bottom left corner square. Link text is light ivory, retro sans-serif, with no underline. Text sizing 
+is responsive. */
+.primary-cta {
+  display: block;                       /* button sits on its own line */
+  justify-self: center;                 /* horizontally centers element in container */
+  border: none;                         /* no border */
+  margin: auto 0;                       /* button is horizontally centered  */
+  background-color: var(--mermaid);     /* teal background */
+  color: var(--mummy);                  /* light ivory text */
+  font-family: var(--font-ultra);       /* retro sans-serif font */
+  font-optical-sizing: auto;            /* responsive letterforms */ /* improves legibility on small displays */
+  font-weight: 700;                     /* bold text */
+  font-style: normal;                   /* no italics */
+  font-size: clamp(18px, 2vw, 26px);    /* responsive text sizing */
+  line-height: 1.3;                     /* more space between lines */  
+  padding: 12px 24px;                   /* space between button edge and link text */
+  text-decoration: none;                /* no underline on links */
+  border-radius: 16px 16px 16px 0;      /* rounded corners, bottom left corner square */
+}
+
+/* The .hero a:hover pseudoclass styles the primary CTA button's hover state. On mouse hover, the button's background turns 
+yellow-green, link text turns dark teal, and the square corner switches to the top left. */
+.hero a:hover {
+  background-color: var(--zombie);      /* yellow-green background */
+  color: var(--merman);                 /* dark teal text */
+  border-radius: 0px 16px 16px 16px;    /* rounded corners, top left corner square */
+}
+
+/* The .hero a:active :active pseudoclass styles the primary CTA button's active state. During mouse click, the 
+button's background turns white, and link text turns teal. */
+.hero a:active {
+  background-color: var(--ghost);       /* white background */
+  color: var(--mermaid);                /* teal text */
+}
+
+
+
+/* -------------------------- */
+/*       FEATURE SECTION      */
+/*       (Auto-fit Grid)      */
+/* -------------------------- */
+
+/* The .feature-section class selector styles the feature section's container. The section has a yellow-green background that
+spans the full width of the window, generous vertical padding, and is horizontally centered. */
+.feature-section {
+  margin: 0 auto;                       /* gallery is horizontally centered */
+  padding: 40px 0;                      /* wide padding on top and bottom */  
+  background-color: var(--zombie);      /* yellow-green background */
+}
+
+/* The .feature-gallery class selector styles the feature gallery's layout. Feature cards are arranged in a responsive 
+CSS Grid, in columns that resize to fit the window, and that has a maximum width of 1100px. Gallery elements are evenly spaced 
+and centered in their columns. Default list styling (bullets) is removed. */
+.feature-gallery {
+  max-width: 1100px;        /* maximum width is 1100px */ /* prevents gallery from getting too wide on desktop */
+  display: grid;            /* formats cards in a grid */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));  /* as many columns as fit, each at least 200px wide */
+  justify-items: center;    /* centers cards horizontally in the grid */
+  gap: 30px;                /* even spacing between cards */
+  list-style: none;         /* default text styles removed */ /* removes bullets */
+  padding: 0 40px;          /* space around sides of gallery content */  
+  margin: 0 auto;           /* horizontally centered */
+
+}
+
+/* The .feature-card class selector styles the feature cards. Each card is a flexbox with a white background, rounded corners, 
+a subtle shadow, responsive padding, and a max width of 350px. Card contents are vertically and horizontally centered. 
+Card text is center-aligned. */
+.feature-card {
+  display: flex;                      /* flexbox container */
+  flex-direction: column;             /* stacks card contents in a column */
+  justify-content: center;            /* centers content horizontally in the card */
+  max-width: 350px;                   /* maximum width is 350px */ /* prevents card from getting too wide on desktop */
+  width: 100%;                        /* card width fils container */
+  border-radius: 20px;                /* rounded corners */
+  overflow: hidden;                   /* content is clipped to container */
+  background-color: var(--ghost);     /* white background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);   /* small drop shadow */
+  padding: clamp(18px, 2vw, 40px);    /* fluid padding around card content */
+  text-align: center;                 /* horizontally centered text */
+}
+
+/* The .feature-icon class selector styles the feature card icons. The icons are small, centered on their own line, and 
+scale proportionally within their containers. */
+.feature-icon {
+  display: block;         /* icon sits on its own line */
+  object-fit: cover;      /* icon fills its container */
+  height: auto;           /* icon height adjusts with container */ /* prevents image distortion */
+  max-width: 50px;        /* keeps icon small */  
+  padding-bottom: 3px;    /* space below icon */
+  margin: 0 auto;         /* horizontally centered */
+
+}
+
+/* THe .feature-gallery p descendant selector styles the feature Ccrd description text. Text is small, dark grey, and 
+center-aligned. Text sizing is responsive. */
+.feature-gallery p {
+  font-size: clamp(11px, 0.7vw, 14px);  /* responsive text sizing */
+  text-align: center;                   /* horizontally centered text */
+  color: var(--darkness);               /* dark grey text */  
+  margin: 0 auto;                       /* horizontally centered in card */
+}
+
+/* The .feature-gallery a descendant selector styles the feature card links. Link text is dark grey, monospace sans-serif font. 
+Links sit on their own line and have a teal background with three rounded corners, the top right corner is square. Text 
+sizing is responsive. */
+.feature-gallery a {
+  display: inline-block;                  /* link sits on a line */  
+  margin: 5px auto;                       /* small vertical margins */  
+  color: var(--darkness);                 /* dark grey text */
+  font-family: var(--font-extra);         /* monospace sans-serif */
+  font-size: clamp(12px, 2.5vw, 16px);    /* responsive text sizing */
+  font-weight: 600;                       /* medium text */
+  font-style: normal;                     /* no italics */
+  padding: 10px 15px;                     /* vertical and horizontal space around link text */  
+  border-radius: 13px 0 13px 13px;        /* rounded corners, top right corner square */
+}
+
+/* The .feature-section a:hover :hover pseudoclass styles a feature card link's hover state. On mouse hover, the link's background
+turns teal, link text turns white, and the underline is removed. */
+.feature-section a:hover {
+  background-color: var(--mermaid);       /* teal background */
+  color: var(--ghost);                    /* white text */
+  text-decoration: none;                  /* no underline on links */
+}
+
+/* THe .feature-section a:active :active pseudoclass styles a feature card link's active state. During mouse click, the link's 
+background turns whiteamd link text turns teal. */
+.feature-section a:active {
+  background-color: var(--ghost);       /* white background */
+  color: var(--mermaid);                /* teal text */
+}
+
+
+/* -------------------------- */
+/*       SECONDARY CTA        */
+/* -------------------------- */
+
+/* The .cta-button class selector styles the secondary CTA button's container. The buton is horizontally centered on a 
+yellow-green background. */
+.cta-button {
+  background-color: var(--zombie);    /* yellow-green background */  
+  margin: 0 auto;                     /* horizontally centered */
+  padding-bottom: 45px;               /* space below content */
+}
+
+/* The .cta-button a:hover pseudoclass styles the secondary CTA button's hover state. On mouse hover, the button 
+background turns white, text turns teal, and the square corner moves to the top right. */
+.cta-button a:hover {
+  border-radius: 16px 0 16px 16px;    /* rounded corners, top right corner square */
+  color: var(--mermaid);              /* teal text */
+  background-color: var(--ghost);     /* white background */
+}
+
+/* The .secondary-cta class selector styles the secondary CTA link as a button. The button is a flexbox with
+a teal background and three rounded corners, bottom left corner is square. Link text is white, retro sans-serif font, 
+with no underline. Text sizing is responsive. */
+.secondary-cta {
+  display: flex;                      /* flexbox container */
+  justify-self: center;               /* horizontally centers button in container */
+  border: none;                       /* no border */
+  margin: 0;                          /* removes margins */
+  background-color: var(--mermaid);   /* teal background */
+  color: var(--ghost);                /* white text */
+  font-family: var(--font-ultra);     /* retro sans-serif font */
+  font-optical-sizing: auto;          /* responsive letterforms */ /* improves legibility on small displays */
+  font-weight: 700;                   /* bold text */
+  font-style: normal;                 /* no italics */
+  font-size: clamp(18px, 2vw, 28px);  /* responsive text sizing */
+  line-height: 1.2;                   /* more space between lines */  
+  padding: 12px 24px;                 /* space between button edge and link text */
+  text-decoration: none;              /* no underline on links */
+  border-radius: 16px 16px 0 16px;    /* rounded corners, bottom left corner square */
+}
+
+
+
+/* 
+==================================
+.........  6. FOOTER  ............
+================================== 
+*/
+
+/* The footer element selector styles the footer's cpntainer. The footer has a teal background, space above its contents, 
+and spans the full width of the window. */
+footer {
+  max-width: 100%;                    /* footer spans the full width of the window */
+  background-color: var(--mermaid);   /* teal background */  
+  padding: 15px 0 0 0;                /* space above content */
+}
+
+/* The .footer-contact class selector styles the footer's contact section. The container is a horizontally centered flexbox. 
+Section elements are evenly spaced and centered in a column. */
+.footer-contact {
+  display: flex;              /* flexbox container */
+  flex-direction: column;     /* arranges contents in a column */
+  margin: 0 auto;             /* horizontally centered in the footer container */
+  gap: 5px;                   /* even spacing between footer links */
+  justify-content: center;    /* centers links horizontally in footer */
+  align-items: center;        /* centers links vertically in footer */
+}
+
+/* The .footer-contact a descendant selector styles the footer's contact links. Link text is white with 15 px space on all sides.
+The link's container has three rounded corners, bottom left corner is square. */
+.footer-contact a {
+  color: var(--ghost);                /* whtie text */
+  padding: 15px;                      /* space around link text */ /* not visible until hover state is active */
+  border-radius: 16px 16px 16px 0;    /* rounded corners, bottom left corner square */ /* not visible until hover state is active */
+}
+
+/* The .footer-contact a:hover pseudoclass a contact link's hover state. On mouse hover, the link's background turns white, 
+and link text turns teal. */
+.footer-contact a:hover {
+  background-color: var(--ghost);     /* white background */
+  color: var(--mermaid);              /* teal text */  
+}
+
+/* The .footer-contact a:active pseudoclass styles a contact link's active state. During mouse click, the link's background 
+turns teal and link text turns white. */
+.footer-contact a:active {
+  color: var(--ghost);                /* white text */
+  background-color: var(--mermaid);   /* teal background */
+}
+
+/* The .footer-email lass selector styles the footer's email link. Link text is semi-bold, white, retro sans-serif font, with 
+slightly expanded letter spacing. Link font is retro sans-serif. Text sizing is responsive. */
+.footer-email {
+  color: var(--ghost);                    /* white text */
+  font-family: var(--font-ultra);         /* retro sans-serif font */
+  font-optical-sizing: auto;              /* responsive letterforms */ /* improves legibility on small displays */
+  font-weight: 600;                       /* medium text */
+  font-style: normal;                     /* no italics */
+  font-size: clamp(14px, 1.4vw, 16px);    /* responsive text sizing */
+  margin: 0 auto;                         /* horizontally centered */
+  letter-spacing: 0.1rem;                 /* more spacieng between letters */
+}
+
+/* The .social-list class selector formats the container for the footer's social media links. Container is a 300px wide flexbox.
+Links are evenly spaced in a row and horizontally centered. Default link styling, padding, and margins are removed. */
+.social-list {
+  display: flex;              /* flexbox container */
+  flex-direction: row;        /* arranges icons in a row */  
+  justify-content: center;    /* icons are horizontally centered  */
+  width: 300px;               /* social media links container width */  
+  height: auto;               /* height adjusts automatically */  
+  gap: 10px;                  /* even spacing between icons */
+  list-style: none;           /* default text styling is removed */ /* removes bullets */
+  margin: 0 auto;             /* horizontally centered */
+  padding: 0;                 /* removes padding */
+}
+
+/* The .social-list li descendant selector styles the footer's social media links in a flexbox. The links are horizontally centered with
+no padding or margin. */
+.social-list li {
+  display: flex;            /* flexbox container */
+  justify-items: center;    /* horizontally centered */  
+  margin: 0;                /* removes margins */  
+  padding: 0;               /* removes padding */
+}
+
+/* Zthe .social-list a:hover descendant selector styles a social meida link's hover state. On mouse hover, the link
+gets a yellow-green background. */
+.social-list a:hover {
+  background-color: var(--zombie);    /* yellow-green background */
+}
+
+/* The .footer-icon class selector styles the social media icons in the footer. Icons are 30px square, and evenly spaced 
+in a row. */
+.footer-icon {
+  display: inline-block;    /* icon sits in a row */
+  width: 30px;              /* icon width */  
+  height: 30px;             /* icon height */
+}
+
+/* The .footer-boilerplate class selector styles the footer's boilerplate content. Boilerplate section is a flexbox with a 
+max width of 500px. Text is center aligned. */
+.footer-boilerplate {
+  display: flex;                  /* flexbox container */
+  flex-direction: column;         /* stacks contents in a column */
+  justify-self: center;           /* horizontally centers element in container */
+  align-content: space-around;    /* even spacing around items */
+  max-width: 500px;               /* maximum width is 500px */ /* keeps footer from getting too wide on desktop */
+  text-align: center;             /* horizontally centered text */
+}
+
+/* The .footer-boilerplate p descendant selector styles boilerplate text in the footer. Text is light ivory, centered, semi-bold,
+with tightened line spacing. Responsive text sizing. */
+.footer-boilerplate p {
+  color: var(--mummy);                  /* light ivory text */  
+  text-align: center;                   /* horizontally centered text */
+  font-size: clamp(14px, 1vw, 16px);    /* responsive text sizing */
+  line-height: 1.4;                     /* more space between lines */
+  font-weight: 600;                     /* semi-bold text */  
+  padding-top: 10px;                    /* adds space above copyright text */
+}
+
+
+
+/* 
+==================================
+......  7. FOCUS-VISIBLE  ........
+================================== 
+*/
+/* The :focus-visible is a pseudoclass selector styles the focus visible outline. Adds a dark teal outline with an 
+offset and a hot pink ring to focus-visible elements. Improves keyboard accessibility. */
+:focus-visible {
+  outline: 3px solid var(--merman);   /* dark teal outline */
+  outline-offset: 3px;                /* adds space between element and outline*/
+  box-shadow: 0 0 0 3px #ff25e6;    /* hot pink ring */
+}
+
+
+
+/* 
+==================================
+....  8. MOBILE NAVIGATION  ......
+================================== 
+*/
+/* These @media styles apply when the viewport is 768px wide or narrower (mobile and tablet displays). */
+@media (max-width: 768px) {
+  .bar {
+  display: block;                     /* bar sits on its own line */
+  width: 26px;                        /* bar length */
+  height: 3px;                        /* bar thickness */
+  background-color: var(--ghost);     /* white background */ /* colors the bar */
+  border-radius: 2px;                 /* slightly rounded corners */
+}
+
+/* 1. Show the hamburger */
+/* The .menu-toggle class selector displays the hamburger button as an inline flexbox on smaller screens, and positions it 
+above the mobile navigation drawer. */
+  .menu-toggle {
+    display: inline-flex;   /* display type flexbox, inline (rows) */ /* button is now visible */
+    position: relative;     /* positions hamburger button relative to another element */ /* uses z-index */
+    z-index: 700;           /* hamburger button is above of the drawer */ /* keeps button cliackable when drawer is open */
+  }
+/* THe .bar class selector shrinks the hamburger bars to 18px wide on mobile. */
+  .bar {
+    display: block;       /* bar sits on its own line */
+    width: 18px;          /* bar length */
+  }
+
+/* 2. The drawer — anchored to the right edge */
+/* The .primary-nav is a class selector creates a mobile navigation drawer at the right side of the header. The drawer 
+stays hidden until triggered by the hamburger button. Drawer has a teal background, yellow-green borders, a rounded 
+bottom-left corner. */
+  .primary-nav {
+    visibility: hidden;                   /* hides the closed navigation drawer */    
+    position: absolute;                   /* positions drawer relative to the header */
+    top: 85px;                            /* drawer starts under the header */
+    right: 0;                             /* aligned right */
+    width: 200px;                         /* drawer width */
+    max-width: 85vw;                      /* maximum width is 85vw */ /* prevents navigation from being wider than the display */
+    height: auto;                         /* height adjusts automatically */    
+    max-height: 100vh;                    /* keeps menu from getting too tall */
+    padding: 15px 0;                      /* adds vertical space */    
+    text-align: center;                   /* horizontally centered text */
+    background-color: var(--mermaid);     /* teal background */
+    border-radius: 0 0 0 50px;            /* rounds the bottom-left corner */    
+    border-left: var(--wide-border);      /* wide yellow-green border on drawer's left edge */    
+    border-bottom: var(--wide-border);    /* wide yellow-green border on the drawer's bottom edge */
+    transform: translateX(100%);          /* drawer is off-screen by default, moves right */
+    transition: transform 0.28s ease, visibility 0.28s;   /* drawer eases in/out from the right */
+    z-index: 500;                         /* navigation covers body content */ /* nav stays visible when scrolling */
+    overflow-y: auto;                     /* adds a scrollbar if nav is taller than the screen */
+  }
+
+/* 3. The OPEN state: slide it into view */
+/* The body.menu-open .primary-nav descendant selector slides the mobile navigation drawer into view from the right side
+of the window. */
+  body.menu-open .primary-nav {
+    transform: translateX(0);     /* drawer sits at the right edge of the screen */
+    visibility: visible;          /* turns the open navigation drawer visible */  
+  }
+
+/* 4. Stack the links vertically inside the drawer */
+/* THe .primary-nav .navlinks descendant selector changes the mobile navigation layout from a row to an evenly spaced column. 
+The drawer's height height adjusts automatically to fit it's content.
+*/
+  .primary-nav .navlinks {
+    height: auto;             /* height adjusts automatically to fit link */
+    flex-direction: column;   /* arranges links in a column */
+    gap: 5px;                 /* even spacxing between links */  
+  }
+
+/* The .primary-nav .navlinks a descendant selector creates a flexbox that centers the mobile navigation links in the drawer. 
+Link text is slightly smaller. */
+  .primary-nav .navlinks a {
+    display: flex;              /* flexbox container */
+    justify-content: center;    /* centers links horizontally */
+    align-items: center;        /* centers links vertically */
+    height: auto;               /* conrtainer height adjusts automatically to fit link */
+    padding: 14px 24px;         /* space around link */
+    font-size: 1em;             /* medium-sized text */  
+  }
+
+/* 5. The translucent backdrop */
+/* The .nav-backdrop class selector styles the dim backdrop (close-menu trigger) behind the open drawer. Backdrop covers the 
+entire window and stays in place while scrolling. The backdrop acts as a button to close the hamburger menu if you click 
+outside of the drawer while mobile nav is open. */
+  .nav-backdrop {
+    position: fixed;    /* backdrop does not move when scrolling */
+    inset: 0;           /* backdrop goes to the edge of the display */
+    background-color: rgba(255, 255, 255, 0.5);   /* off-white background, 50% transparency */
+    z-index: 200;      /* backdrop covers body content but not the drawer */ /* backdrop is clickable when drawer is open */
+  }
+
+/* 6. Style the open hamburger button and transform its bars into an X. */
+/* This ruleset changes the hamburger button background to teal when the mobile navi menu is open, and clips any content 
+extending outside the button's container. */
+  body.menu-open .menu-toggle {
+    overflow: hidden;                   /* hides content below the bottom of teh button */
+    background-color: var(--mermaid);   /* teal background */  
+  }
+
+/* This reulset rotates the top bar (.bar:nth-child(1)) down. */
+  .menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);     /* moves (translateY) and rotates the top bar clockwise to form an X */  
+  }
+
+/* This ruleset makes the middle bar (.bar:nth-child(2)) invisible. */
+  .menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;   /* sets the bar's opacity to 0 */  
+  }
+
+/* This ruleset roates the bottom bar (.bar:nth-child(3)) up. */
+  .menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);   /* moves and rotates the bottom bar counterclockwise to form an X */  
+  }
+}
+
+
+/* 
+==================================
+......  9. REDUCED MOTION  .......
+================================== 
+*/
+/* prefers-reduced-motion is a media feature that shortens animations and transitions when the user requests reduced motion.
+The !important declarations override competing animation and transition durations to improve accessibility. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;    /* animations finish almost instantly */
+    transition-duration: 0.01ms !important;   /* transitions finish almost instantly */
+  }
+}

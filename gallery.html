@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+The <!DOCTYPE html> declaration identifies the document as HTML5.
+The <html lang="en"> element identifies English as the page language.
+The <head> element contains information used by the browser.
+This section sets character encoding, sets display and device width, adds a page title, and links to 
+the external Google fonts and CSS stylesheet.
+<link rel="preconnect"> starts connections to the Google Fonts servers early.
+<link href="..." rel="stylesheet"> loads the selected Google Fonts.
+<meta charset="UTF-8"> sets character encoding for the page.
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> sets device width for media queries.
+<title>...</title> adds page title content.
+<link rel="stylesheet" href="css/style.css"> links to the external CSS stylesheet.
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portfolio | Kimberley Yockers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- 
+The <body> element contains the webpage's visible content, and is assigned the container class. 
+-->
+<body class="container">
+
+<!-- HEADER -->
+<!--
+The <header> element contains the site's logo and navigation controls.
+The <div> element groups the logo, menu button, and navigation links.
+The <a> element makes the SVG logo a back-to-top link.
+The <svg> element draws the circular logo and its KY lettering.
+This section creates the site header and logo link.
+<header class="site-header">    Assigns the "site-header" class to the header.
+<div class="header-inner">      Assigns the "header-inner" class to the grouping container.
+<a href="#top" aria-label="Back to top">  Links to the element with id "top" and gives the icon-only link an accessible name.
+<svg viewBox="0 0 50 50" width="48" height="48">  Sets the SVG drawing area and size
+aria-hidden="true"              Hides the drawing from screen readers
+<circle ...>                    Makes the green circular background
+<text ...>                      Draws the white KY letters inside the circle
+-->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" aria-label="Back to top">
+        <svg viewBox="0 0 50 50" width="48" height="48" aria-hidden="true">
+          <circle cx="25" cy="25" r="24" fill="#669900" />
+          <text x="12" y="32" fill="#ffffff" font-family="MuseoModerno, system-ui, sans-serif" font-size="20" font-weight="700">KY</text>
+      </svg>
+  </a>
+
+<!-- NAVIGATION -->
+<!--
+The <button> element controls the mobile navigation menu.
+The three <span> elements make uo the hamburger icon's bars.
+The <nav> element contains links to the site's five pages.
+The <ul> element groups the navigation links into a list.
+Each <li> element contains a navigation link.
+This section creates the hamburger button and the navigation links.
+<button type="button" class="menu-toggle">...</button>  Creates a button and assigns it the class menu-toggle
+aria-expanded="false"          Sets the inital state of the maobile nav menu to closed
+aria-controls="primary-nav"    Identifies the navigation element controlled by the button
+aria-label="Open menu"         Gives the hamburger button a screen-reader accessible name
+<span class="bar">             Creates three lines to make up the hambuger
+<nav...></nav>                 Creates and labels the navigation menu for scrren readers
+<ul class="navlinks">          Assigns the "navlinks" class to the navigation links
+<a href="...">                 Links to another page in the site
+-->
+      <!-- begin hamburger menu button -->
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"
+        aria-label="Open menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <!-- end hamburger menu button-->
+
+      <!-- begin navigation menu -->
+      <nav id="primary-nav" class="primary-nav" aria-label="primary navigation">
+        <ul class="navlinks">
+          <!-- list items -->
+          <li><a href="index.html">home</a></li>
+          <li><a href="gallery.html">portfolio</a></li>
+          <li><a href="services.html">skills</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="contact.html">contact</a></li>
+          <!-- end list items -->
+        </ul>
+      </nav>
+      <!-- end nav menu -->
+    </div>
+  </header>
+
+
+<!--  BACKDROP FOR MOBILE NAV  -->
+<!--
+The <div> element creates a hidden backdrop behind the mobile navigation drawer.
+<div class="nav-backdrop">...</div>   Creates the backgdrops container and assigns it the class nav-backdrop
+hidden                                Backdrop is hidden on page load 
+-->
+  <div class="nav-backdrop" hidden></div>
+
+
+<!--  MAIN  -->
+<!--
+The <main> element holds the homepage's primary content.
+<main>...</main>  Creates the container
+id="top"          Assigns it the ID top, used as the brand logo's back-to-top link target
+<h1>...</h1>      Adds a temporary page title, assigns it the filler-title class
+-->
+    <main id="top">
+        <h1 class="filler-title">Portfolio</h1>
+    </main>
+
+
+
+<!--  FOOTER  -->
+<!--
+The <footer> element contains the contact email, social media links, and copyright notice.
+The first <div> element groups the email link and social media list.
+The second <div> element contains the copyright paragraph.
+The <ul> element groups the social media links.
+Each <li> element contains a social media link.
+The first <a> element links to my persoanl email address. 
+The three additional <a> elements link to my external social media profiles.
+Each <img> element contains a social media logo.
+This section creates the footer contact area and copyright information.
+<footer>...</footer>        Creates the footer and assigns it the nav ID footer
+<div class="...">...</div>  Creates a container and assigns it a style class
+<a href="mailto:"...">      Opens email application and fills send to address
+<ul>...</ul>                Creates a list of the social media links and assigns it the social-list class
+target="_blank"             Opens link in a new tab
+rel="..."                   Prevents the new page from accessing the this page
+aria-label="..."            Gives the link a screen-reader accessible name
+<img>...</img>              Loads a social media logo, assigns it the footer-icon class, and adds descriptive text
+<p>&copy;...</p>            Adds copyright, date, and author name
+-->
+  <footer id="footer">
+    <div class="footer-contact">
+      <a href="mailto:kim.yockers@gmail.com" class="footer-email">kim.yockers@gmail.com</a>
+      <ul class="social-list">
+        <li>
+          <a href="https://github.com/kyockers" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <img src="img/gh-logo.svg" class="footer-icon" alt="GitHub logo">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kyockers/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn profile">
+            <img src="img/li-logo.png" class="footer-icon" alt="LinkedIn logo">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/princess.death.goddess/" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram profile">
+            <img src="img/ig-logo.svg" class="footer-icon" alt="Instagram logo">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-boilerplate">
+      <p>&copy;2026 Kimberley Yockers</p>
+    </div>
+  </footer>
+
+<!--  JAVASCRIPT  -->
+<!--
+The <script> element loads the external JavaScript file that controls the hamburger menu and backdrop.
+<script>...</script>  Loads and executes the external script (js/script.js)
+-->
+  <script src="js/script.js"></script>
+</body>
+</html>
