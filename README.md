@@ -2,9 +2,6 @@
 
 A 5-page responsive website for my personal portfolio, built for ITD 210 (Web Page Design 2) at Northern Virginia Community College.
 
-**Live site:** https://yockers-capstone.netlify.app
-**Source:**    https://github.com/kyockers/yockers-capstone
-
 ## Pages
 - Home (index.html)
 - About (about.html)
